@@ -1,49 +1,80 @@
+//QUESTION 1: OLDEST PERSON
 // Define a function called oldestPerson that takes an object with names as keys and
 // ages as values (e.g., {'Chuck': 22, 'Brian': 46}), and then returns the name of the oldest living person.
-
-// Define a function called longestWord that takes a string and returns the longest word in the string.
-// Refactor the longestWord function so that it ignores punctuation.
-
-// Define a function called factorial that takes a random number as an argument and then returns the factorial of that given number.
-// Bonus: Write a function called palindrome that takes a string as an argument and returns the string in
-//reversed order. Return true if the string is the same as the reversed string, otherwise return false.
-
+var people = [
+    {name: 'Chuck', age: 22},
+    {name: 'Brain', age: 46},
+  ];
 var oldestPerson = function() {
-  var object = ({'Chuck' : 22}, {'Brian' : 46});
-  for (var i = 0; i < object.length; i++) {
-      if (22<46) {
-        return 'Brian';
+  var oldestAge = 0;
+  var oldestName = null;
+  for (var i = 0; i < people.length; i++) {
+      if (oldestAge < people[i].age) {
+        oldestAge = people[i].age;
+        oldestName = people[i].name;
       }
-      else {
-        return 'Chuck';
-      }
-    }
+  }
+  console.log(oldestName);
 };
+oldestPerson();
 
-//for keys in object_name (loop)
-
-
-
-
-var longestWord = function(string) {
-  var array1 = string.split(" ")
-    var longestArray = function(){
-      for (var i = 0; i < array1.length; i++) {
-        if (array1[i] < array1[i+1]) {
-          return array1[i+1];
+//QUESTION 2 - LONGEST WORD
+// Define a function called longestWord that takes a string and returns the longest word in the string.
+function longestWord(string) {
+    var array1 = string.split(" ");
+    var longest = 0;
+    var word = null;
+    for (var i = 0; i < array1.length; i++) {
+        if (longest < array1[i].length) {
+            longest = array1[i].length;
+            word = array1[i];
         }
-          else {
-            return array1[i];
-        
-      }
-
-      }
-      return longestArray
     }
-  };
+    console.log(word)
+    return word;
+}
+longestWord(string);
 
-    return array1
+//QUESTION 3: REFACTOR
+// Refactor the longestWord function so that it ignores punctuation.
+function longestWord(string) {
+    var string1 = string.replace(/[^\w\s]|_/g, " ");
+    var array1 = string1.split(" ");
+    var longest = 0;
+    var word = null;
+    for (var i = 0; i < array1.length; i++) {
+        if (longest < array1[i].length) {
+            longest = array1[i].length;
+            word = array1[i];
+        }
     }
-var string1 = ("Hello my name is Zoe.")
+    console.log(word)
+    return word;
+}
+longestWord(string);
 
-  console.log(array1);
+
+//QUESTION 4: FACTORIAL FUNCTION
+// Define a function called factorial that takes a random number as
+//an argument and then returns the factorial of that given number.
+var randomNum = Math.floor(Math.random() * 100);
+function factorial () {
+var answer = 1;
+for (var i = 1; i <= randomNum; i++) {
+  answer *= i;
+}
+  return answer;
+}
+
+//QUESTION 5: BONUS
+//Write a function called palindrome that takes a string as an argument and returns the string in
+//reversed order. Return true if the string is the same as the reversed string, otherwise return false.
+function palindrome (string) {
+  var reversed = string.split("").reverse().join("");
+  if (string.toLowerCase === reversed.toLowerCase) {
+    return true;
+  }
+  else {
+    return false;
+  }
+};
